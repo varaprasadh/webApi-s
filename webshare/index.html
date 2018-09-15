@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>share</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        window.onload = () => {
+            document.querySelector('#btn').addEventListener('click', sharefun);
+
+            function sharefun() {
+                if (navigator.share) {
+                    navigator.share({
+                            title: 'Web Fundamentals',
+                            text: 'Check out Web Fundamentals — it rocks!',
+                            url: 'https://developers.google.com/web',
+                        })
+                        .then(() => console.log('Successful share'))
+                        .catch((error) => console.log('Error sharing', error));
+                } else
+                    console.log('not supported!')
+            }
+        }
+    </script>
+    <style>
+        #btn {
+            width: 100px;
+            height: 50px;
+            background: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">share</button>
+
+</body>
+
+</html>
